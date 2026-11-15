@@ -1,0 +1,7 @@
+spt-path.txt
+private-terms.txt
+bin/
+obj/
+dist/
+Assets/
+*.pdb
