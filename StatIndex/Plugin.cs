@@ -22,6 +22,7 @@ namespace StatIndex
         internal static Kind Attachments;
         internal static Kind Collector;
 
+        internal static ConfigEntry<AmmoStyle> AmmoLook;
         internal static ConfigEntry<LinePlace> LinePosition;
         internal static ConfigEntry<int> LineSize;
         internal static ConfigEntry<Color> LineColour;
@@ -32,7 +33,10 @@ namespace StatIndex
         {
             Log = Logger;
 
-            Ammo = new Kind(Config, "1. Ammo", "[{pen}/{dmg}]", "[{pen}/{dmg}]", "penetration/damage, [53/42]");
+            Ammo = new Kind(Config, "1. Ammo", null, null, "penetration and damage, [P:53 D:42]");
+            AmmoLook = Config.Bind("1. Ammo", "Style", AmmoStyle.Colons,
+                new ConfigDescription("How penetration and damage are written: [P:53 D:42], [P53 D42], or [53/42].", null,
+                    new ConfigurationManagerAttributes { CustomDrawer = AmmoStyleField.Draw }));
             Armor = new Kind(Config, "2. Armor", "[Lv{class}{plates}]", "[Lv{class}]",
                 "armor class, [Lv3+] (+ takes plates); on the cell each plate fitted, front first, - for an empty slot");
             Containers = new Kind(Config, "3. Containers", "[{cells}]", "[{cells}]", "grid cells inside, [35]");
@@ -71,6 +75,16 @@ namespace StatIndex
             new Harmony(Guid).PatchAll(typeof(Plugin).Assembly);
             Log.LogInfo("StatIndex loaded");
         }
+    }
+
+    internal enum AmmoStyle
+    {
+        // [P53 D42]
+        Letters,
+        // [P:53 D:42]
+        Colons,
+        // [53/42]
+        Slash
     }
 
     internal enum LinePlace

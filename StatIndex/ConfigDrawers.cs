@@ -11,6 +11,29 @@ namespace StatIndex
         public Action<ConfigEntryBase> CustomDrawer;
     }
 
+    // Ammo style for F12: one button per style, written as it shows on the item.
+    internal static class AmmoStyleField
+    {
+        private static readonly (AmmoStyle Style, string Label)[] Shown =
+        {
+            (AmmoStyle.Colons, "[P:53 D:42]"),
+            (AmmoStyle.Letters, "[P53 D42]"),
+            (AmmoStyle.Slash, "[53/42]")
+        };
+
+        public static void Draw(ConfigEntryBase entryBase)
+        {
+            var entry = (ConfigEntry<AmmoStyle>)entryBase;
+            GUILayout.BeginHorizontal();
+            foreach (var shown in Shown)
+            {
+                bool on = GUILayout.Toggle(entry.Value == shown.Style, shown.Label, GUI.skin.button);
+                if (on && entry.Value != shown.Style) entry.Value = shown.Style;
+            }
+            GUILayout.EndHorizontal();
+        }
+    }
+
     // Colour picker for F12, same as PriceIndex's: swatch, hex field, and RGB sliders when the swatch is clicked.
     internal static class ColourField
     {

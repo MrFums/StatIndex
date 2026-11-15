@@ -9,12 +9,20 @@ namespace StatIndex
 {
     internal static class Stats
     {
-        public static string Ammo(ItemTemplate template, string format)
+        // Format from the Ammo style setting.
+        public static string Ammo(ItemTemplate template)
         {
             if (!(template is AmmoTemplate ammo)) return null;
             if (ammo.PenetrationPower == 0 && ammo.Damage == 0) return null;
             string dmg = ammo.ProjectileCount > 1 ? ammo.ProjectileCount + "x" + ammo.Damage : ammo.Damage.ToString();
-            return Fill(format).Replace("{pen}", ammo.PenetrationPower.ToString()).Replace("{dmg}", dmg);
+            string format;
+            switch (Plugin.AmmoLook.Value)
+            {
+                case AmmoStyle.Letters: format = "[P{pen} D{dmg}]"; break;
+                case AmmoStyle.Slash: format = "[{pen}/{dmg}]"; break;
+                default: format = "[P:{pen} D:{dmg}]"; break;
+            }
+            return format.Replace("{pen}", ammo.PenetrationPower.ToString()).Replace("{dmg}", dmg);
         }
 
         // Built-in class (own or locked inserts); {plates} becomes + if it takes plates.

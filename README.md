@@ -7,7 +7,7 @@ every stash cell and in front of every item name.
 
 ## Features
 
-- Ammo: penetration and damage, `[38/52]`
+- Ammo: penetration and damage, `[P:38 D:52]`
 - Armor: armor class, `[Lv4]`, with `+` if it takes plates; the cell shows each plate fitted, front first, `-` for an
   empty slot
 - Containers: grid cells inside, `[42]`
@@ -35,6 +35,7 @@ Client only. In multiplayer, install it on each player's game.
 F12 > Fums-StatIndex:
 
 - Each type: show on the stash cell, show on full names
+- Ammo style: `[P:53 D:42]`, `[P53 D42]` or `[53/42]`
 - Cell line: where it sits (under the name or top left), text size, colour, and whether it shows on flea offers and
   trader stock
 

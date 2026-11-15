@@ -62,7 +62,7 @@ namespace StatIndex
         private static string Text(Item item)
         {
             var template = item.Template;
-            string ammo = Plugin.Ammo.OnCell.Value ? Stats.Ammo(template, Plugin.Ammo.CellFormat) : null;
+            string ammo = Plugin.Ammo.OnCell.Value ? Stats.Ammo(template) : null;
             string armor = Plugin.Armor.OnCell.Value ? Stats.ItemArmor(item, Plugin.Armor.CellFormat) : null;
             string cells = Plugin.Containers.OnCell.Value ? Stats.Cells(template, Plugin.Containers.CellFormat) : null;
             string keys = Plugin.Keys.OnCell.Value ? Stats.Keys(template, Plugin.Keys.CellFormat) : null;

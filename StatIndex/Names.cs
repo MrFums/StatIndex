@@ -91,7 +91,7 @@ namespace StatIndex
                 if (id.Length != IdLength || pair.Value == null) continue;
                 var template = pair.Value;
 
-                string a = Stats.Ammo(template, Plugin.Ammo.NameFormat);
+                string a = Stats.Ammo(template);
                 string r = Stats.TemplateArmor(template, templates, Plugin.Armor.NameFormat);
                 string c = Stats.Cells(template, Plugin.Containers.NameFormat);
                 string k = Stats.Keys(template, Plugin.Keys.NameFormat);
