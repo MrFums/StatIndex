@@ -45,9 +45,3 @@ F12 > Fums-StatIndex:
 ```
 
 Needs the .NET SDK and an SPT 4.1 folder.
-
-## Credits
-
-- Made by Fums.
-- MIT licence. See `LICENSE`.
-- Escape from Tarkov belongs to Battlestate Games. Stat Index is a fan mod, not made or backed by them.
